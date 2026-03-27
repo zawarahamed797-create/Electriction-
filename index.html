@@ -3,64 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Electrician Services - 24/7 Home Repair</title>
+    <title>King Electric Store - Expert Electrical Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
-            --primary: #2980b9; /* Electric Blue */
-            --secondary: #f1c40f; /* Power Yellow */
-            --dark: #2c3e50;
-            --light: #ecf0f1;
+            --primary: #2c3e50; /* Deep Dark */
+            --accent: #f39c12; /* Golden/Orange Spark */
+            --blue: #2980b9; 
+            --light: #f4f7f6;
         }
 
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: var(--light); color: var(--dark); }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: var(--light); color: var(--primary); }
 
         /* Header */
         header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 22px; font-weight: bold; color: var(--primary); text-decoration: none; }
-        .logo span { color: var(--secondary); }
+        .logo { font-size: 24px; font-weight: 900; color: var(--primary); text-decoration: none; text-transform: uppercase; }
+        .logo span { color: var(--accent); }
 
         /* Hero Section */
         .hero { 
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000'); 
-            height: 350px; background-size: cover; background-position: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1000'); 
+            height: 380px; background-size: cover; background-position: center; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             color: white; text-align: center; padding: 20px;
         }
-        .hero h1 { font-size: 2.5rem; margin: 0; }
-        .hero p { font-size: 1.1rem; margin: 10px 0; color: var(--secondary); font-weight: bold; }
+        .hero h1 { font-size: 2.8rem; margin: 0; letter-spacing: 1px; }
+        .hero p { font-size: 1.2rem; margin: 10px 0; color: var(--accent); font-weight: bold; }
+        .hero .badge-secure { background: #27ae60; padding: 6px 15px; border-radius: 5px; font-size: 14px; margin-top: 15px; }
 
         /* Services Grid */
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .service-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-bottom: 4px solid var(--primary); }
-        .service-img { width: 100%; height: 160px; object-fit: cover; }
-        .service-info { padding: 15px; text-align: center; }
-        .service-name { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
-        .service-price { font-size: 20px; font-weight: 800; color: var(--primary); display: block; margin-bottom: 12px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .service-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: 0.3s; border-top: 5px solid var(--accent); }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-img { width: 100%; height: 180px; object-fit: cover; }
+        .service-info { padding: 20px; text-align: center; }
+        .service-name { font-size: 19px; font-weight: bold; margin-bottom: 10px; }
+        .service-price { font-size: 22px; font-weight: 800; color: var(--blue); display: block; margin-bottom: 15px; }
         
-        .btn-add { width: 100%; background: var(--dark); color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-add:hover { background: var(--primary); }
+        .btn-add { width: 100%; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-add:hover { background: var(--accent); color: var(--primary); }
 
-        /* Cart/Booking Panel */
-        #cart-panel { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+        /* Cart Sidebar */
+        #cart-panel { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 25px; display: flex; flex-direction: column; box-sizing: border-box; }
         #cart-panel.active { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 15px; }
         
-        .cart-items { flex-grow: 1; overflow-y: auto; margin-top: 15px; }
-        .cart-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f1f1f1; font-size: 14px; }
+        .cart-items { flex-grow: 1; overflow-y: auto; margin-top: 20px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f1f1; }
 
-        /* Verification & Form */
-        #home-service-box { display: none; background: #f9f9f9; padding: 15px; border-radius: 10px; margin-top: 10px; border-left: 4px solid var(--secondary); }
-        .input-field { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        /* Address Box */
+        #home-service-box { display: none; background: #fff8e1; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px dashed var(--accent); }
+        .input-field { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
 
-        .footer-cart { margin-top: auto; padding-top: 15px; }
-        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 8px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border: none; font-size: 16px; cursor: pointer; }
-        .home-btn { background: var(--primary); margin-top: 8px; }
+        .footer-cart { margin-top: auto; padding-top: 20px; }
+        .total-row { display:flex; justify-content:space-between; font-weight:bold; font-size:20px; margin-bottom: 15px; color: var(--primary); }
+        
+        .whatsapp-btn { background: #25D366; color: white; text-align: center; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; border: none; font-size: 16px; cursor: pointer; margin-bottom: 10px; }
+        .home-btn { background: var(--blue); }
 
-        /* Floating Button */
-        .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1500; }
-        .badge { position: absolute; top: 0; right: 0; background: var(--secondary); color: var(--dark); width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; border: 2px solid white; }
+        /* Floating Cart */
+        .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1500; border: 2px solid white; }
+        .badge { position: absolute; top: -5px; right: -5px; background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; }
 
         @media (max-width: 500px) { #cart-panel { width: 100%; } }
     </style>
@@ -68,15 +72,15 @@
 <body>
 
 <header>
-    <a href="#" class="logo"><i class="fas fa-bolt"></i> EXPERT <span>ELECTRIC</span></a>
-    <div style="font-size: 14px; font-weight: 600;"><i class="fas fa-phone-alt"></i> 0321-7742445</div>
+    <a href="#" class="logo">KING <span>ELECTRIC</span></a>
+    <div style="font-size: 14px; font-weight: 700; color: var(--blue);"><i class="fas fa-bolt"></i> Fast Service</div>
 </header>
 
 <div class="hero">
-    <h1>Bijli Ka Kaam? No Problem!</h1>
-    <p>Professional Wiring, UPS Repair & Solar Fitting</p>
-    <div style="background: var(--secondary); color: var(--dark); padding: 5px 20px; border-radius: 5px; font-weight: bold; margin-top: 10px; font-size: 14px;">
-        <i class="fas fa-shield-alt"></i> 100% Secure Home Service
+    <h1>KING ELECTRIC STORE</h1>
+    <p>Your Trusted Partner for All Electrical Repairs & Fittings</p>
+    <div class="badge-secure">
+        <i class="fas fa-user-shield"></i> Verified & Secure Home Service
     </div>
 </div>
 
@@ -85,7 +89,7 @@
         <div class="service-card">
             <img src="https://images.unsplash.com/photo-1558210834-473f430c09ac?q=80&w=500" class="service-img">
             <div class="service-info">
-                <div class="service-name">UPS & Inverter Repair</div>
+                <div class="service-name">UPS & Inverter Repairing</div>
                 <span class="service-price">Visit: Rs. 1,000</span>
                 <button class="btn-add" onclick="addToCart('UPS Repair', 1000)">Add to Service</button>
             </div>
@@ -94,16 +98,16 @@
         <div class="service-card">
             <img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=500" class="service-img">
             <div class="service-info">
-                <div class="service-name">Ceiling Fan Fitting</div>
+                <div class="service-name">Ceiling Fan Installation</div>
                 <span class="service-price">Rs. 500</span>
-                <button class="btn-add" onclick="addToCart('Fan Fitting', 500)">Add to Service</button>
+                <button class="btn-add" onclick="addToCart('Fan Installation', 500)">Add to Service</button>
             </div>
         </div>
 
         <div class="service-card">
             <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=500" class="service-img">
             <div class="service-info">
-                <div class="service-name">Short Circuit Repair</div>
+                <div class="service-name">Short Circuit / DB Fixing</div>
                 <span class="service-price">Start: Rs. 1,500</span>
                 <button class="btn-add" onclick="addToCart('Short Circuit', 1500)">Add to Service</button>
             </div>
@@ -112,14 +116,14 @@
 </div>
 
 <div class="cart-float" onclick="toggleCart()">
-    <i class="fas fa-tools"></i>
+    <i class="fas fa-bolt" style="font-size: 24px;"></i>
     <div class="badge" id="cart-count">0</div>
 </div>
 
 <div id="cart-panel">
     <div class="cart-header">
-        <h3><i class="fas fa-list"></i> Service List</h3>
-        <i class="fas fa-times" onclick="toggleCart()" style="cursor:pointer"></i>
+        <h3 style="margin:0;"><i class="fas fa-shopping-cart"></i> Selected Jobs</h3>
+        <i class="fas fa-times" onclick="toggleCart()" style="cursor:pointer; font-size: 20px;"></i>
     </div>
     
     <div class="cart-items" id="cart-items">
@@ -127,23 +131,23 @@
     </div>
 
     <div id="home-service-box">
-        <label style="font-size: 12px; font-weight: bold;">Home Address:</label>
-        <input type="text" id="address" class="input-field" placeholder="House#, Street#, Area name">
-        <p style="font-size: 10px; color: #e67e22;">* Security ke liye ID Card ki photo WhatsApp par lazmi hai.</p>
+        <label style="font-size: 13px; font-weight: bold; color: var(--primary);">Service Address:</label>
+        <input type="text" id="address" class="input-field" placeholder="Ghar ka mukammal pata likhein">
+        <p style="font-size: 11px; color: #d35400; font-weight: 600;">* Security verification ke liye ID Card lazmi hai.</p>
     </div>
 
     <div class="footer-cart">
-        <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:18px; margin-bottom: 10px;">
+        <div class="total-row">
             <span>Total Bill:</span>
             <span id="total-price">Rs. 0</span>
         </div>
         
         <button class="whatsapp-btn" onclick="sendWhatsApp(false)">
-            <i class="fas fa-calendar-check"></i> Book Appointment
+            <i class="fas fa-store"></i> Store Appointment
         </button>
         
         <button class="whatsapp-btn home-btn" onclick="enableHomeService()">
-            <i class="fas fa-truck"></i> Urgent Home Service
+            <i class="fas fa-home"></i> Request Home Service
         </button>
     </div>
 </div>
@@ -164,7 +168,7 @@
         if(cart.length === 0) return alert("Pehle koi kaam select karein!");
         isHomeService = true;
         document.getElementById('home-service-box').style.display = 'block';
-        alert("Home service ke liye address likhein.");
+        alert("Home service ke liye apna address darj karein.");
     }
 
     function addToCart(name, price) {
@@ -200,8 +204,8 @@
                 <div class="cart-item">
                     <span>${item.name}</span>
                     <div>
-                        <b>Rs. ${item.price.toLocaleString()}</b>
-                        <i class="fas fa-trash-alt" onclick="removeItem(${index})" style="color:#e74c3c; margin-left:10px; cursor:pointer;"></i>
+                        <b style="color:var(--blue)">Rs. ${item.price.toLocaleString()}</b>
+                        <i class="fas fa-trash-alt" onclick="removeItem(${index})" style="color:#e74c3c; margin-left:15px; cursor:pointer;"></i>
                     </div>
                 </div>`;
         });
@@ -225,14 +229,14 @@
             total += item.price;
         });
 
-        let msg = isHomeService ? "*URGENT HOME ELECTRIC SERVICE*\n" : "*ELECTRIC SERVICE APPOINTMENT*\n";
+        let msg = isHomeService ? "*KING ELECTRIC - HOME SERVICE REQUEST*\n" : "*KING ELECTRIC - STORE APPOINTMENT*\n";
         msg += "------------------------------\n";
         msg += details;
         msg += "------------------------------\n";
         if(isHomeService) msg += "*ADDRESS:* " + address + "\n";
-        msg += "*ESTIMATED TOTAL:* Rs. " + total.toLocaleString() + "\n";
+        msg += "*TOTAL ESTIMATE:* Rs. " + total.toLocaleString() + "\n";
         msg += "------------------------------\n";
-        msg += "Main 100% advance pay kar ke kaam karwana chahta/chahti hoon. Details bhejein.";
+        msg += "Main King Electric se service hasil karne ke liye raabta kar raha/rahi hoon. Mazeed maloomat dein.";
 
         window.open("https://wa.me/" + number + "?text=" + encodeURIComponent(msg), '_blank');
     }
@@ -240,4 +244,3 @@
 
 </body>
 </html>
-
